@@ -1,0 +1,198 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  height: 100%;
+  overflow: hidden;
+}
+
+.main {
+  padding-top: 20px;
+  width: 100%;
+  height: 100%;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+#particles-js {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  background-color: darkgray;
+  background-image: url("");
+  background-size: cover;
+  background-position: 50% 50%;
+  background-repeat: no-repeat;
+  z-index: -10;
+}
+
+.header {
+  font-size: 45px;
+  font-family: "Girassol", cursive;
+  letter-spacing: 8px;
+  color: black;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+td {
+  border: 1px solid #79d9ce;
+  width: 25px;
+  height: 25px;
+  background-color: rgb(95, 107, 119);
+  opacity: 0.9;
+  transition: ease-in-out;
+}
+
+td:hover {
+  opacity: 0.8;
+}
+
+.side-bar {
+  position: absolute;
+  z-index: 100;
+  width: 30%;
+  background: transparent;
+  right: 2%;
+  top: 15%;
+  border-radius: 5px;
+  max-width: 300px;
+}
+
+.card {
+  background: whitesmoke;
+  opacity: 0.8;
+  transition: 0.3s;
+}
+
+
+.card:hover {
+  transition: ease-in-out;
+  background: white;
+  opacity: 0.95;
+}
+
+.card-header.title {
+  font-size: 28px;
+  color: #ff4d00;
+}
+
+.card-header a {
+  font-weight: bold;
+}
+
+.btn {
+  white-space: normal !important;
+  word-wrap: break-word !important;
+  display: inline-block;
+  text-align: center;
+  vertical-align: middle;
+}
+
+.btn-space {
+  margin-right: 5px;
+}
+
+.info-bar {
+  position: absolute;
+  z-index: 100;
+  width: 30%;
+  background: transparent;
+  left: 2%;
+  top: 5%;
+  border-radius: 5px;
+  max-width: 300px;
+}
+
+.info-bar .card .card-header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.rotate {
+  -moz-transition: all 0.2s linear;
+  -webkit-transition: all 0.2s linear;
+  transition: all 0.2s linear;
+}
+
+.rotate.down {
+  -moz-transform: rotate(180deg);
+  -webkit-transform: rotate(180deg);
+  transform: rotate(180deg);
+}
+
+.github-info {
+  border: 1px solid #79d9ce;
+  background-color: rgb(95, 107, 119);
+  opacity: 0.9;
+  width: 30%;
+  color: white;
+  bottom: 10px;
+  position: absolute;
+  left: 35%;
+  border-radius: 50px;
+  text-align: center;
+}
+
+.github-info a {
+  color: white;
+  text-decoration: none;
+}
+
+.color-code {
+  height: 25px;
+  width: 25px;
+}
+
+.start {
+  background-color: rgb(70, 16, 220);
+  opacity: 0.8;
+  color: rgb(70, 16, 220);
+}
+
+.end {
+  background-color: rgb(214, 202, 96);
+  opacity: 0.8;
+  color: rgb(214, 202, 96);
+}
+
+.wall {
+  background: darkgray;
+  color: darkgray;
+}
+
+.searching {
+  background-color: lawngreen;
+  color: lawngreen;
+}
+
+.visited {
+  background-color: springgreen;
+  color: springgreen;
+}
+
+.shortest {
+  background-color: aqua;
+  color: aqua;
+}
+
+.unvisited-weight {
+  background-color: black;
+  color: black;
+}
+
+ul {
+  list-style-type: square;
+}
+
+li {
+  margin-bottom: 25px;
+}
+

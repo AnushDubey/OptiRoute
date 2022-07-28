@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8" />
+  <meta 
+    name="description" 
+    content="PathFinding visualization project, that visualizes 4 shortest path algorithms, A*, Best-First Search, Dijkstra and Breadth-First Search">
+  <meta 
+    name="authors" 
+    content="Nitesh Srivastava and Anush Dubey">
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1, shrink-to-fit=no"
+  />
+  <title>PathFinding Visualization</title>
+  <!-- Style sheet script.js -->
+  <link
+    href="https://fonts.googleapis.com/css2?family=Girassol&display=swap"
+    rel="stylesheet"
+  />
+  <link
+    rel="stylesheet"
+    href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+    integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN"
+    crossorigin="anonymous"
+  >
+  <!-- Bootstrap CSS -->
+  <link
+    rel="stylesheet"
+    href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+    crossorigin="anonymous"
+  />
+  <link
+  rel="stylesheet"
+  href="./styles/main.css"
+/>
+</head>
+
+<body>
+  <div id="particles-js"></div>
+  <div class="float-container main">
+    <div class="header pt-4">
+      <p>
+        Path-Finding Algorithm Visualizer
+      </p>
+    </div>
+    <!-- Grid -->
+    <div id="tableContainer"></div>
+  </div>
+
+  <!-- [Start] Instruction bar (draggable) -->
+  <div
+    class="info-bar"
+    id="info-bar"
+  >
+    <div class="card">
+      <div class="card-header">
+        <a
+          id="info-header"
+          href="#"
+        >
+          Instructions
+        </a>
+        <a
+          data-toggle="collapse"
+          href="#collapse"
+        >
+          <div
+            id="info-icon"
+            class="fa fa-chevron-up rotate"
+          ></div>
+        </a>
+      </div>
+      <div
+        id="collapse"
+        class="collapse show"
+        data-parent="#info-bar"
+      >
+        <div class="card-body">
+          <div
+            id="info-description"
+            class="info-description"
+          >
+            <ul>
+              <li>Click within the grid and drag your mouse to draw obstacles represented by <span
+                  class="color-code wall"
+                ></span> invisible highlight.</li>
+              <li>Drag the <span class="color-code start">. . .</span> Start node to set the start position</li>
+              <li>Drag the <span class="color-code end">. . .</span> End node to set the end position</li>
+              <li>Click and drag your mouse to add umweighted walls <span class="color-code wall">. . .</span></li>
+              <li>Click and press the 'W' key on your keyboard and drag your mouse to add <span
+                  class="color-code unvisited-weight"
+                >. . .</span> Weights for weighted algorithms.
+              </li>
+              <li>Choose an algorithm from the right hand side bar, then Click Start button in the lower right corner of the side bar to start the visualization.</li>
+              <li>The <span class="color-code visited">. . .</span> Visted nodes will be highlighted along the <span
+                  class="color-code shortest"
+                >. . .</span> Shortest path.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+  <!-- [End] Instruction bar -->
+
+  <!-- [Start] Algorithm Sidebar (draggable) -->
+  <div
+    class="side-bar"
+    id="side-bar"
+  >
+    <div class="card mb-3">
+      <div class="card-header title">
+        <a
+          class="card-link"
+          href="#"
+        >
+          Algorithms
+        </a>
+      </div>
+    </div>
+
+    <div
+      id="accordion"
+      class="mb-3"
+    >
+      <div class="card">
+        <div class="card-header">
+          <a
+            id="aStar"
+            class="card-link"
+            data-toggle="collapse"
+            href="#collapseOne"
+          >
+            A*
+          </a>
+        </div>
+        <div
+          id="collapseOne"
+          class="collapse"
+          data-parent="#accordion"
+        >
+          <div class="card-body">
+            <div
+              id="aStarTimer"
+              class="timer"
+            >
+              00 min 00 sec 00 ms
+            </div>
+            <div
+              id="aStarCount"
+              class="count"
+            >
+            Distance Count: 0
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <a
+            id="greedyBFS"
+            class="card-link"
+            data-toggle="collapse"
+            href="#collapseTwo"
+          >
+            Greedy Best-First Search
+          </a>
+        </div>
+        <div
+          id="collapseTwo"
+          class="collapse"
+          data-parent="#accordion"
+        >
+          <div class="card-body">
+            <div
+              id="greedyBFSTimer"
+              class="timer"
+            >
+              00 min 00 sec 00 ms
+            </div>
+            <div
+              id="greedyBFSCount"
+              class="count"
+            >
+            Distance Count: 0
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <a
+            id="dijkstra"
+            class="collapsed card-link"
+            data-toggle="collapse"
+            href="#collapseThree"
+          >
+            Dijkstra
+          </a>
+        </div>
+        <div
+          id="collapseThree"
+          class="collapse"
+          data-parent="#accordion"
+        >
+          <div class="card-body">
+            <div
+              id="dijkstraTimer"
+              class="timer"
+            >
+              00 min 00 sec 00 ms
+            </div>
+            <div
+              id="dijkstraCount"
+              class="count"
+            >
+            Distance Count: 0
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <a
+            id="BFS"
+            class="collapsed card-link"
+            data-toggle="collapse"
+            href="#collapseFour"
+          >
+            Breadth-First Search (BFS)
+          </a>
+        </div>
+        <div
+          id="collapseFour"
+          class="collapse"
+          data-parent="#accordion"
+        >
+          <div class="card-body">
+            <div
+              id="BFSTimer"
+              class="timer"
+            >
+              00 min 00 sec 00 ms
+            </div>
+            <div
+              id="BFSCount"
+              class="count"
+            >
+            Distance Count: 0
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Allow diagonal checkbox -->
+    <div class="card mb-3">
+      <div class="card-header">
+        <form>
+          <div class="custom-control custom-checkbox">
+            <input
+              type="checkbox"
+              class="custom-control-input"
+              id="diagonal-flag"
+              name="example1"
+            >
+            <label
+              class="custom-control-label mb-0"
+              for="diagonal-flag"
+            >
+              <a
+                class="card-link ml-2"
+                href="#"
+              >
+                Allow diagonals
+              </a>
+            </label>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <!-- Control Buttons -->
+    <div class="card mt-3">
+      <div class="card-header">
+        <button
+          id="startBtn"
+          type="button"
+          class="btn btn-primary btn-lg btn-block"
+        >
+          Select an Algorithm
+        </button>
+        <button
+          id="clearPathBtn"
+          type="button"
+          class="btn btn-secondary btn-lg btn-block"
+        >
+          Clear Path
+        </button>
+        <button
+          id="clearBtn"
+          type="button"
+          class="btn btn-secondary btn-lg btn-block"
+        >
+          Clear Grid
+        </button>
+      </div>
+    </div>
+  </div>
+  <!-- [End] Algorithm Side-bar -->
+
+  <!-- GitHub info -->
+  <div class="github-info">
+    <a href="https://github.com/soumyaa1804/PathFinding-Visualization" class="ml-2">
+      View on <span class="fa fa-github"></span> GitHub </a> 
+  </div>
+
+  <!-- Optional JavaScript -->
+
+  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+
+  <script
+    src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+    integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+    crossorigin="anonymous"
+  ></script>
+  <script
+    src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+    integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+    crossorigin="anonymous"
+  ></script>
+  <script
+    src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+    integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+    crossorigin="anonymous"
+  ></script>
+
+  <!-- For animated background -->
+  <script src="src/particles.js"></script>
+  <script src="src/app.js"></script>
+
+  <!-- Main scripts -->
+  <script
+    type="module"
+    src="src/script.js"
+  ></script>
+  <script
+    type="nomodule"
+    src="dest/script.js"
+  ></script>
+</body>
+
+</html>
