@@ -1,4 +1,4 @@
-# Pathfinding-visualizer
+# OptiRoute - a pathfinding visualizer tool for optimum routes
 A visualisation tool for various pathfinding algorithms. We (me and @NimbleNitesh) collaborated and built this application because we were fascinated by pathfinding algorithms, and wanted to visualize them in action. We hope that you enjoy playing around with this visualization tool just as much as we enjoyed building it. The site is live at: https://our-pathfinding-visualizer.netlify.app/
 # Installation
  * Install Node on your computer
